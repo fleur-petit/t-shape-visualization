@@ -1,0 +1,49 @@
+skill;category;y;y_aim
+Ik kan dit onderwerp toepassen;Text;0.0;
+Netbeheer;Domain;0.5;1.0
+Elektriciteitsnetten;Domain;0.5;1.5
+Interactie digitale producten Alliander;Domain;1.5;3.0
+Alliander data strategie;Domain;1.5;3.0
+Alliander DS ontwikkelingen;Domain;2.0;3.0
+O&S planning;Domain;2.5;3.0
+GVRN planning;Domain;2.5;3.0
+Cloud deployment;Technical;1.5;3.0
+Secure development;Technical;1.0;2.0
+Alliander development standaarden;Technical;2.0;4.0
+Design patterns;Technical;0.5;2.0
+Object georiënteerd;Technical;1.0;2.0
+CI/CD;Technical;1.5;2.5
+Docker;Technical;1.0;3.0
+Databases;Technical;2.0;4.0
+Time series;Technical;3.0;6.0
+Python;Technical;4.0;6.0
+Operations research;Technical;4.0;6.0
+Analyse ontwerp;Technical;5.0;7.0
+NLP;Technical;4.0;4.0
+Forecasting;Technical;5.0;6.0
+Classification;Technical;6.0;6.0
+KPIs definieëren;Technical;7.0;7.0
+Model explainability;Technical;5.0;7.0
+Git;Technical;6.0;7.0
+Hypothesis testing;Technical;7.0;7.0
+Deep learning;Technical;7.0;7.0
+Data visualisation;Technical;8.0;8.0
+Data exploration;Technical;8.0;8.0
+R;Technical;9.5;9.5
+Project management;Personal;2.0;2.0
+Presenteren;Personal;3.0;5.0
+Agile werken;Personal;4.0;4.0
+Netwerken;Personal;5.0;5.0
+Organisation of data science related events (symposia/workshops/talks);Personal;7.0;7.0
+Business impact;Personal;5.0;5.5
+Effectieve communicatie;Personal;5.0;6.0
+Ontwikkeling materiaal data science onderwijs;Personal;7.0;7.0
+Data Science ethiek;Personal;8.0;8.0
+Samenwerken business;Personal;6.0;6.5
+Samenwerken developers;Personal;7.5;7.5
+Onderzoek;Personal;8.0;8.0
+Kritisch denken;Personal;8.0;8.0
+Technische concepten uitleggen aan lay audience;Personal;6.5;7.0
+Schrijven en rapporteren;Personal;8.0;8.0
+Leermentaliteit;Personal;9.5;9.5
+Ik begeleid anderen op dit onderwerp;Text;10.0;

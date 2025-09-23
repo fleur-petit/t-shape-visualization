@@ -1,11 +1,10 @@
 # T-Shape Skills Visualization
 
-Interactive visualization tool for analyzing and exploring T-shaped skills data. This project provides multiple visualization options to help you understand skill distributions across different categories (Domain, Technical, and Personal skills).
+Visualization tool for analyzing and exploring T-shaped skills data.
 
 ## Features
 
-- 📊 **Interactive Visualizations**: Plotly-based interactive charts with hover details
-- 📈 **Static Visualizations**: Matplotlib charts for presentations
+- 📈 **Static Visualizations**: Plotnine charts for presentations
 - 📋 **Skills Summary**: Statistical overview by category
 - 🎯 **Target Tracking**: Compare current skills with target levels
 - 🔍 **Detailed Breakdown**: Category-wise skill exploration

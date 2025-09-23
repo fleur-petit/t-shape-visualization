@@ -23,14 +23,6 @@ except Exception as e:
 
 
 app_ui = ui.page_fluid(
-    ui.div(
-        ui.h1("📊 T-shape skills visualisation", class_="text-center mb-4"),
-        ui.p(
-            "Visualisation of T-shaped skills profile",
-            class_="text-center text-muted mb-5",
-        ),
-        class_="container",
-    ),
     ui.layout_sidebar(
         ui.sidebar(
             ui.h3("Options"),

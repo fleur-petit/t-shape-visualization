@@ -5,7 +5,6 @@ Visualization tool for analyzing and exploring T-shaped skills data.
 ## Features
 
 - 📈 **Static Visualizations**: Plotnine charts for presentations
-- 📋 **Skills Summary**: Statistical overview by category
 - 🎯 **Target Tracking**: Compare current skills with target levels
 - 🔍 **Detailed Breakdown**: Category-wise skill exploration
 - 🌐 **Modern Web Interface**: Built with Shiny for Python

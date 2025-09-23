@@ -1,6 +1,6 @@
 """Shiny App for T-Shape Skills Visualisation"""
 
-from shiny import App, render, ui
+from shiny import App, render, ui, reactive
 from io import BytesIO
 import base64
 import polars as pl
@@ -8,8 +8,7 @@ from typing import Any, Union
 
 from src.data_loader import load_data
 from src.visualizations import (
-    create_ggplot_visualization,
-    create_skills_summary,
+    create_t_shape_visualization,
 )
 
 
@@ -27,31 +26,33 @@ app_ui = ui.page_fluid(
     ui.div(
         ui.h1("📊 T-shape skills visualisation", class_="text-center mb-4"),
         ui.p(
-            "Interactive visualisation of your T-shaped skills profile",
+            "Visualisation of T-shaped skills profile",
             class_="text-center text-muted mb-5",
         ),
         class_="container",
     ),
     ui.layout_sidebar(
         ui.sidebar(
-            ui.h3("Visualisation options"),
+            ui.h3("Options"),
+            ui.p(
+                "Turn the toggle on to show only the skills that I want to improve upon.",
+                class_="text-muted small",
+            ),
             ui.input_switch(
                 "show_target",
                 "Skills marked for growth only",
                 value=False,
             ),
             ui.p(
-                "Toggle off to show current skills only, or on to show skills marked for growth only.",
+                "Turn the toggle on to show a table with raw data below the t-shape.",
                 class_="text-muted small",
             ),
-            ui.hr(),
-            ui.h3("View data"),
-            ui.input_checkbox("show_summary", "Show skills summary", value=True),
-            ui.input_checkbox("show_raw_data", "Show raw data", value=False),
+            ui.input_switch("show_raw_data", "Show raw data", value=False),
             ui.hr(),
             ui.h4("Legend"),
             ui.HTML("""
             <div class="legend">
+                <p><em>The T-shape goes from 0 to 10 where 10 stands for "I can instruct others." and 0-4 stand for "I am familiar with the basics.".</em></p>
                 <p><strong>Skill categories:</strong></p>
                 <ul style="list-style: none; padding: 0;">
                     <li><span style="background-color: #821e7d; color: white; padding: 2px 6px; border-radius: 3px; font-size: 12px;">Domain</span> Alliander-specific knowledge</li>
@@ -60,10 +61,9 @@ app_ui = ui.page_fluid(
                 </ul>
                 <p><strong>Display modes:</strong></p>
                 <ul style="list-style: none; padding: 0;">
-                    <li><strong>Current skills only:</strong> Show current skill levels as text boxes</li>
-                    <li><strong>Skills marked for growth only:</strong> Show only target levels for skills that differ from current</li>
+                    <li><strong>Current skills only:</strong> Show current skill levels</li>
+                    <li><strong>Skills marked for growth only:</strong> Show only those skills that I want to improve upon</li>
                 </ul>
-                <p><em>The T-shape goes from 0 to 10 where 10 stands for "I can instruct others." and 0-4 stand for "I am familiar with the basics.".</em></p>
             </div>
             """),
             width=300,
@@ -95,6 +95,21 @@ app_ui = ui.page_fluid(
 
 
 def server(input: Any, output: Any, session: Any) -> None:
+    @reactive.calc
+    def filtered_content_data() -> pl.DataFrame:
+        """Return filtered content data based on show_target toggle."""
+        if not data_loaded:
+            return pl.DataFrame()
+
+        if input.show_target():
+            # Only show skills where y != y_aim (skills marked for growth)
+            return content_data.filter(
+                (pl.col("y_aim").is_not_null()) & (pl.col("y") != pl.col("y_aim"))
+            )
+        else:
+            # Show all skills
+            return content_data
+
     @render.ui
     def main_content() -> ui.Tag:
         if not data_loaded:
@@ -112,18 +127,9 @@ def server(input: Any, output: Any, session: Any) -> None:
             ui.h2("Skills profile visualisation"),
             ui.output_ui("main_plot"),
             ui.br(),
-            ui.output_ui("conditional_summary"),
             ui.output_ui("conditional_raw_data"),
             ui.h3("Skills breakdown by category"),
             ui.output_ui("skills_breakdown"),
-        )
-
-    @render.ui
-    def conditional_summary() -> ui.Tag:
-        if not data_loaded or not input.show_summary():
-            return ui.div()
-        return ui.div(
-            ui.h3("Skills summary by category"), ui.output_data_frame("summary_table")
         )
 
     @render.ui
@@ -141,7 +147,7 @@ def server(input: Any, output: Any, session: Any) -> None:
         mode = "target" if input.show_target() else "current"
 
         # Use ggplot visualisation with selected mode
-        fig = create_ggplot_visualization(content_data, shape_data, mode)
+        fig = create_t_shape_visualization(filtered_content_data(), shape_data, mode)
 
         # Convert ggplot figure to base64 image
         buffer = BytesIO()
@@ -155,32 +161,27 @@ def server(input: Any, output: Any, session: Any) -> None:
         )
 
     @render.data_frame
-    def summary_table() -> Union[pl.DataFrame, Any]:
-        if not data_loaded:
-            return pl.DataFrame()
-        # Return polars DataFrame directly
-        summary_df = create_skills_summary(content_data)
-        return render.DataGrid(summary_df, width="100%")
-
-    @render.data_frame
     def raw_data_table() -> Union[pl.DataFrame, Any]:
         if not data_loaded:
             return pl.DataFrame()
-        # Return polars DataFrame directly
-        return render.DataGrid(content_data, width="100%")
+        # Return filtered polars DataFrame directly
+        return render.DataGrid(filtered_content_data(), width="100%")
 
     @render.ui
     def skills_breakdown() -> ui.Tag:
         if not data_loaded:
             return ui.div("Data not available")
 
+        # Get filtered data
+        data_to_use = filtered_content_data()
+
         # Get unique categories using polars
-        categories = content_data.select("category").unique().to_series().to_list()
+        categories = data_to_use.select("category").unique().to_series().to_list()
 
         tabs = []
         for cat in categories:
             # Filter and sort data using polars
-            cat_data = content_data.filter(pl.col("category") == cat).sort(
+            cat_data = data_to_use.filter(pl.col("category") == cat).sort(
                 "y", descending=True
             )
 

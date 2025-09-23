@@ -119,7 +119,7 @@ def _resolve_duplicate_positions(df: pl.DataFrame) -> pl.DataFrame:
     return df
 
 
-def create_ggplot_visualization(
+def create_t_shape_visualization(
     content_data: pl.DataFrame, shape_data: pl.DataFrame, mode: str = "current"
 ) -> object:
     """Create T-shape visualisation using ggplot (plotnine) with text boxes."""
@@ -150,14 +150,10 @@ def create_ggplot_visualization(
             plot = _plot_skills(plot, colors, positioned_data, label="skill")
 
     elif mode == "target":
-        # Show only target skills where they differ from current
-        target_skills = content_data.filter(
-            (pl.col("y_aim").is_not_null()) & (pl.col("y") != pl.col("y_aim"))
-        )
-
-        if len(target_skills) > 0:
+        # Show target skills (data is already filtered to y != y_aim when mode is "target")
+        if len(content_data) > 0:
             # Add the absolute difference to the skill label
-            target_skills_with_diff = target_skills.with_columns(
+            target_skills_with_diff = content_data.with_columns(
                 (
                     pl.col("skill")
                     + ": +"
@@ -204,22 +200,3 @@ def _plot_skills(plot, colors, positioned_data, label) -> object:
         + scale_fill_manual(values=colors)
     )
     return plot
-
-
-def create_skills_summary(content_data: pl.DataFrame) -> pl.DataFrame:
-    """Create summary statistics for skills by category."""
-    summary = (
-        content_data.group_by("category")
-        .agg(
-            [
-                pl.col("y").count().alias("count_y"),
-                pl.col("y").mean().alias("mean_y"),
-                pl.col("y").max().alias("max_y"),
-                pl.col("y_aim").mean().alias("mean_y_aim"),
-                pl.col("y_aim").max().alias("max_y_aim"),
-            ]
-        )
-        .sort("category")
-    )
-
-    return summary

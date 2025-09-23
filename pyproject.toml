@@ -16,6 +16,7 @@ dependencies = [
     "polars>=1.33.1",
     "pyarrow>=21.0.0",
     "plotnine>=0.13.6",
+    "rsconnect-python>=1.27.1",
 ]
 
 [project.optional-dependencies]

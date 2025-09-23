@@ -1,0 +1,12 @@
+{
+    "https://api.shinyapps.io": {
+        "server_url": "https://api.shinyapps.io",
+        "filename": "/Users/fleur.petit/projects/t-shape",
+        "app_url": "https://fmpetit.shinyapps.io/t-shape_skills_visualisation/",
+        "app_id": "15535968",
+        "app_guid": null,
+        "title": "T-Shape skills visualisation",
+        "app_mode": "python-shiny",
+        "app_store_version": 1
+    }
+}

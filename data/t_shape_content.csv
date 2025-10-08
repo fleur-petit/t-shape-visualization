@@ -1,45 +1,45 @@
 skill;category;y;y_aim
-netbeheer;Domain;0.5;1.0
-power grids;Domain;0.5;1.5
-interaction of digital products Alliander;Domain;1.5;3.0
-Alliander DS strategy and vision;Domain;1.5;3.0
-Alliander DS innovations;Domain;2.0;3.0
+Netbeheer;Domain;0.5;1.0
+Netbeheer;Domain;0.5;1.5
+Interaction Digital Products Alliander;Domain;1.5;3.0
+Alliander DS Strategy and Vision;Domain;1.5;3.0
+Alliander DS Innovations;Domain;2.0;3.0
 O&S planning;Domain;2.5;3.0
 GVRN planning;Domain;2.5;3.0
-cloud deployment;Technical;1.5;3.0
-secure development;Technical;1.0;2.0
-Alliander development best-practices;Technical;2.0;4.0
-design patterns;Technical;0.5;2.0
-object oriented programming;Technical;1.0;2.0
-CI/CD;Technical;1.5;2.5
-docker;Technical;1.0;3.0
-databases;Technical;2.0;4.0
-time series;Technical;3.0;6.0
+AWS;Technical;1.5;3.0
+Secure Development;Technical;1.0;2.0
+Alliander Development Best-practices;Technical;2.0;4.0
+Design Patterns;Technical;0.5;2.0
+Object Oriented programming;Technical;1.0;2.0
+DevOps;Technical;1.5;2.5
+Docker;Technical;1.0;3.0
+Data Extraction;Technical;2.0;4.0
+Time Series Analysis;Technical;3.0;6.0
 Python;Technical;4.0;6.0
-operations research;Technical;4.0;6.0
-solution design;Technical;5.0;7.0
+LP/MIP;Technical;4.0;6.0
+Solution Design;Technical;5.0;7.0
 NLP;Technical;4.0;4.0
-forecasting;Technical;5.0;6.0
-classification;Technical;6.0;6.0
-business impact assessment;Technical;7.0;7.0
-model explainability;Technical;5.0;7.0
-git;Technical;6.0;7.0
-hypothesis testing;Technical;7.0;7.0
-deep learning;Technical;7.0;7.0
-data visualisation;Technical;8.0;8.0
-data exploration;Technical;8.0;8.0
+Forecasting;Technical;5.0;6.0
+Classification;Technical;6.0;6.0
+Business Impact Assessment;Technical;7.0;7.0
+Model Explainability;Technical;5.0;7.0
+Git;Technical;6.0;7.0
+Statistics and Probability Theory;Technical;7.0;7.0
+Deep Learning;Technical;7.0;7.0
+Data Visualisation;Technical;8.0;8.0
+Data Exploration;Technical;8.0;8.0
 R;Technical;9.5;9.5
-project management;Personal;2.0;2.0
-presenting;Personal;3.0;5.0
-agile;Personal;4.0;4.0
-develop prof. network;Personal;5.0;5.0
-organisation of data science related events (symposia/workshops/talks);Personal;7.0;7.0
-develop material for DS education;Personal;7.0;7.0
-data ethics;Personal;8.0;8.0
-collaboration business;Personal;6.0;6.5
-collaboration developpers;Personal;7.5;7.5
-research;Personal;8.0;8.0
-critical thinking;Personal;8.0;8.0
-communicate with a non-scientific audience;Personal;6.5;7.0
-documentation;Personal;8.0;8.0
-learning mentality;Personal;9.5;9.5
+Project Management;Personal;2.0;2.0
+Presenting;Personal;3.0;5.0
+Agile;Personal;4.0;4.0
+Networking;Personal;5.0;5.0
+Organisation Data Science Events;Personal;7.0;7.0
+Develop Material DS Education;Personal;7.0;7.0
+Data Ethics;Personal;8.0;8.0
+Collaboration Business;Personal;6.0;6.5
+Collaboration Developpers;Personal;7.5;7.5
+Research;Personal;8.0;8.0
+Critical Thinking;Personal;8.0;8.0
+Communication Lay Audience;Personal;6.5;7.0
+Documentation;Personal;8.0;8.0
+Learning Mentality;Personal;9.5;9.5

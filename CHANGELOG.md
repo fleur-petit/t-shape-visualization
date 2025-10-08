@@ -2,7 +2,7 @@
 
 All notable changes to the T-Shape Skills Visualisation project will be documented in this file.
 
-## [Unreleased]
+## [0.2.0]
 
 ### Added
 - Reactive data filtering with `@reactive.calc` decorator

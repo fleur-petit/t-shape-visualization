@@ -1,7 +1,7 @@
 [project]
-name = "t-shape-visualization"
-version = "0.1.0"
-description = "Interactive T-shape skills visualization tool"
+name = "t-shape-visualisation"
+version = "0.2.0"
+description = "Interactive T-shape skills visualisation with reactive filtering and modern UI"
 authors = [
     {name = "Fleur Petit", email = "fleur.petit@alliander.com"}
 ]

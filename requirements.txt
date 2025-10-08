@@ -1,9 +1,11 @@
-pandas>=2.0.0
-matplotlib>=3.7.0
-plotly>=5.15.0
 shiny>=0.6.0
-numpy>=1.24.0
 polars>=1.33.1
 pyarrow>=21.0.0
 plotnine>=0.13.6
-rsconnect-python>=1.20.0
+matplotlib>=3.8.0
+pandas>=2.2.0
+numpy>=1.23.5
+scipy>=1.8.0
+statsmodels>=0.14.5
+mizani~=0.14.0
+rsconnect-python>=1.27.1

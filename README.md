@@ -1,13 +1,16 @@
-# T-Shape Skills Visualization
+# T-Shape Skills Visualisation
 
-Visualization tool for analyzing and exploring T-shaped skills data.
+Interactive web application for visualising and exploring T-shaped skills data with reactive filtering and modern UI.
 
 ## Features
 
-- 📈 **Static Visualizations**: Plotnine charts for presentations
-- 🎯 **Target Tracking**: Compare current skills with target levels
-- 🔍 **Detailed Breakdown**: Category-wise skill exploration
+- 🎯 **Interactive Toggle**: Switch between current skills and skills marked for growth
+- 📊 **Reactive Visualisation**: All charts and tables update automatically based on filtering
+- 🔍 **Skills Breakdown**: Category-wise skill exploration with target comparisons
+- � **Growth Tracking**: Visual indicators showing skill progression with absolute differences
 - 🌐 **Modern Web Interface**: Built with Shiny for Python
+- 📋 **Data Tables**: Interactive data grids for detailed skill analysis
+- 🔗 **GitHub Integration**: Direct link to source code repository
 
 ## Installation
 
@@ -36,7 +39,29 @@ This project uses [UV](https://docs.astral.sh/uv/) for dependency management.
 uv run python src/app.py
 ```
 
+Or use the root-level entry point:
+
+```bash
+uv run python app.py
+```
+
 This will start the interactive web application at `http://127.0.0.1:8000`
+
+### Application Interface
+
+The application provides two main views:
+
+1. **Current Skills Only** (toggle off): Shows all skills at their current levels
+2. **Skills Marked for Growth Only** (toggle on): Shows only skills where the target level differs from current level, with growth indicators (e.g., "Python: +2")
+
+All visualisations, data tables, and breakdowns are reactive and update automatically when you switch between modes.
+
+### Interactive Features
+
+- **Toggle Switch**: Filter between all skills and growth-focused skills
+- **Skills Breakdown**: Tabbed view by category (Domain, Technical, Personal)
+- **Raw Data View**: Optional table showing the underlying data
+- **Responsive Design**: Works on desktop and mobile devices
 
 ### Data Format
 
@@ -55,39 +80,53 @@ The application expects two CSV files in the `data/` directory:
 ## Project Structure
 
 ```
-t-shape-visualization/
+t-shape-visualisation/
 ├── src/
 │   ├── __init__.py
-│   ├── app.py              # Main Shiny application
+│   ├── app.py              # Main Shiny application with reactive UI
 │   ├── data_loader.py      # Data loading and preprocessing
-│   └── visualizations.py  # Visualization functions
+│   └── visualisations.py  # Visualisation functions using plotnine
 ├── data/
 │   ├── t_shape_content.csv # Skills data
 │   └── t_shape_shape.csv   # T-shape outline
+├── app.py                  # Root entry point for deployment
+├── requirements.txt        # Dependencies for deployment
 ├── pyproject.toml          # Project configuration
 ├── uv.lock                 # Dependency lock file
 └── README.md
 ```
 
-## Visualization Types
+## Technology Stack
 
-1. **Interactive Plotly Charts**: 
-   - Hover over points to see skill details
-   - Zoom and pan capabilities
-   - Legend interaction
+- **Python 3.9+**: Core programming language
+- **UV**: Modern Python dependency management
+- **Shiny for Python**: Reactive web framework
+- **Polars**: High-performance data processing
+- **Plotnine**: Grammar of Graphics visualisation (ggplot2 for Python)
+- **Bootstrap**: Responsive UI framework
 
-2. **Static Matplotlib Charts**:
-   - Publication-ready plots
-   - Customizable styling
+## Visualisation Features
+
+### T-Shape Plot
+- **Current Skills Mode**: Shows all skills positioned within the T-shape outline
+- **Growth Mode**: Shows only skills with target levels different from current, including absolute difference indicators
+- **Category Colours**: Domain (purple), Technical (blue), Personal (green)
+- **Responsive Layout**: Automatically scales to fit the display
+
+### Data Presentation
+- **Skills Breakdown**: Tabbed interface showing skills by category
+- **Progress Indicators**: Badges showing current vs target levels with delta calculations
+- **Interactive Tables**: Sortable and searchable data grids
+- **Reactive Filtering**: All components update simultaneously when toggling between modes
 
 ## Shiny Framework
 
 This application uses [Shiny for Python](https://shiny.posit.co/py/) which provides:
 
-- **Reactive Programming**: Automatic updates when inputs change
+- **Reactive Programming**: Automatic updates when inputs change using `@reactive.calc`
 - **Modern UI**: Bootstrap-based responsive interface
 - **Fast Performance**: Built on FastAPI/Starlette
-- **Easy Deployment**: Can be deployed to various platforms
+- **Easy Deployment**: Can be deployed to shinyapps.io and other platforms
 
 ## Development
 
@@ -109,16 +148,56 @@ uv add --dev pytest black flake8 mypy
 uv run pytest
 ```
 
-## Customization
+### Code Quality
 
-- **Colors**: Modify category colors in `src/data_loader.py`
-- **Layout**: Adjust chart layouts in `src/visualizations.py`
-- **UI**: Customize the Shiny interface in `src/app.py`
+The project follows British English spelling conventions and uses:
+- Modern Python practices with type hints
+- Polars for high-performance data processing (no pandas dependency)
+- Reactive programming patterns with Shiny
+- Clean separation of concerns between data loading, visualisation, and UI
+
+## Data Processing
+
+The application uses **Polars** exclusively for data processing, providing:
+- **High Performance**: Faster than pandas for most operations
+- **Memory Efficiency**: Better memory usage patterns
+- **Type Safety**: Strong typing with compile-time optimisations
+- **Modern API**: Intuitive method chaining and expressions
+
+Key reactive features:
+- `@reactive.calc` decorator for computed values that update automatically
+- Consistent filtering across all visualisations and tables
+- Efficient data transformations using Polars expressions
+
+## Customisation
+
+- **Colours**: Modify category colours in `src/data_loader.py`
+- **Layout**: Adjust chart layouts in `src/visualisations.py`
+- **UI**: Customise the Shiny interface in `src/app.py`
+- **Styling**: Bootstrap classes and custom CSS for responsive design
 
 ## Deployment
 
-The Shiny app can be deployed to:
+### ShinyApps.io Deployment
+
+1. Install deployment dependencies:
+   ```bash
+   uv add rsconnect-python
+   ```
+
+2. Configure your shinyapps.io account:
+   ```bash
+   uv run rsconnect add --account YOUR_ACCOUNT --name YOUR_ACCOUNT --server shinyapps.io --token YOUR_TOKEN --secret YOUR_SECRET
+   ```
+
+3. Deploy the application:
+   ```bash
+   uv run rsconnect deploy shiny . --title "T-Shape Skills Visualisation"
+   ```
+
+### Other Deployment Options
 - **Posit Connect**: Professional deployment platform
-- **ShinyApps.io**: Free hosting for Shiny applications
 - **Docker**: Container-based deployment
 - **Cloud platforms**: AWS, Google Cloud, Azure
+
+The app includes a root-level `app.py` and `requirements.txt` for easy deployment to most Python hosting platforms.

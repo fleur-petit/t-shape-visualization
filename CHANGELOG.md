@@ -1,0 +1,44 @@
+# Changelog
+
+All notable changes to the T-Shape Skills Visualisation project will be documented in this file.
+
+## [Unreleased]
+
+### Added
+- Reactive data filtering with `@reactive.calc` decorator
+- Toggle switch to filter between all skills and skills marked for growth
+- Absolute difference indicators in growth mode (e.g., "Python: +2")
+- GitHub footer link with icon in the application
+- Root-level `app.py` for easy deployment
+- `requirements.txt` for deployment compatibility
+- Deployment documentation for shinyapps.io
+
+### Changed
+- Replaced radio buttons with toggle switch for better UX
+- Updated all UI text to use British English spelling (visualisation, colour, etc.)
+- Updated text capitalisation to only capitalise first word in titles
+- Simplified visualisation modes from three to two (current vs growth)
+- Removed arrow visualisation in favour of cleaner text-based indicators
+- Migrated from pandas to Polars exclusively for better performance
+
+### Removed
+- Comparison mode with arrows (replaced with growth indicators)
+- Pandas dependency (now uses Polars throughout)
+- Summary table (consolidated into skills breakdown)
+
+### Technical Improvements
+- All data filtering now happens reactively in the server function
+- Consistent data source across all visualisations and tables
+- Improved performance with Polars data processing
+- Better separation of concerns between data loading and visualisation
+- Enhanced responsive design with Bootstrap components
+
+## [0.1.0] - Initial Release
+
+### Added
+- Basic T-shape skills visualisation using plotnine
+- Shiny for Python web interface
+- CSV data loading for skills and shape outline
+- Category-based skill organisation (Domain, Technical, Personal)
+- Interactive skills breakdown by category
+- UV-based dependency management

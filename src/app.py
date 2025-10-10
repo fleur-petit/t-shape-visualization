@@ -27,7 +27,7 @@ app_ui = ui.page_fluid(
         ui.sidebar(
             ui.h3("Options"),
             ui.p(
-                "Turn the toggle on to show only the skills that I want to improve upon.",
+                "Enable to filter skills marked for growth.",
                 class_="text-muted small",
             ),
             ui.input_switch(
@@ -36,7 +36,16 @@ app_ui = ui.page_fluid(
                 value=False,
             ),
             ui.p(
-                "Turn the toggle on to show a table with raw data below the t-shape.",
+                "Enable to filter on skills that all Alliander data scientists should have basic familiarity with.",
+                class_="text-muted small",
+            ),
+            ui.input_switch(
+                "alliander_essential",
+                "Alliander essential skills only",
+                value=False,
+            ),
+            ui.p(
+                "Enable to view the raw data below the visualisation.",
                 class_="text-muted small",
             ),
             ui.input_switch("show_raw_data", "Show raw data", value=False),
@@ -50,11 +59,6 @@ app_ui = ui.page_fluid(
                     <li><span style="background-color: #821e7d; color: white; padding: 2px 6px; border-radius: 3px; font-size: 12px;">Domain</span> Alliander-specific knowledge</li>
                     <li><span style="background-color: #008cbe; color: white; padding: 2px 6px; border-radius: 3px; font-size: 12px;">Technical</span> Technical skills & tools</li>
                     <li><span style="background-color: #7db43c; color: white; padding: 2px 6px; border-radius: 3px; font-size: 12px;">Personal</span> Soft skills & competencies</li>
-                </ul>
-                <p><strong>Display modes:</strong></p>
-                <ul style="list-style: none; padding: 0;">
-                    <li><strong>Current skills only:</strong> Show current skill levels</li>
-                    <li><strong>Skills marked for growth only:</strong> Show only those skills that I want to improve upon</li>
                 </ul>
             </div>
             """),
@@ -89,18 +93,24 @@ app_ui = ui.page_fluid(
 def server(input: Any, output: Any, session: Any) -> None:
     @reactive.calc
     def filtered_content_data() -> pl.DataFrame:
-        """Return filtered content data based on show_target toggle."""
+        """Return filtered content data based on show_target and alliander_essential toggles."""
         if not data_loaded:
             return pl.DataFrame()
-
+        
+        # Start with all data
+        filtered_data = content_data
+        
+        # Apply show_target filter if enabled
         if input.show_target():
-            # Only show skills where y != y_aim (skills marked for growth)
-            return content_data.filter(
+            filtered_data = filtered_data.filter(
                 (pl.col("y_aim").is_not_null()) & (pl.col("y") != pl.col("y_aim"))
             )
-        else:
-            # Show all skills
-            return content_data
+        
+        # Apply alliander_essential filter if enabled
+        if input.alliander_essential():
+            filtered_data = filtered_data.filter(pl.col("alliander_essential") == 1)
+        
+        return filtered_data
 
     @render.ui
     def main_content() -> ui.Tag:

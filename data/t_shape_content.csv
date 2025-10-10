@@ -1,45 +1,47 @@
-skill;category;y;y_aim
-Netbeheer;Domain;0.5;1.0
-Elektriciteitsnetten;Domain;0.5;1.5
-Interaction Digital Products Alliander;Domain;1.5;3.0
-Alliander DS Strategy and Vision;Domain;1.5;3.0
-Alliander DS Innovations;Domain;2.0;3.0
-O&S planning;Domain;2.5;3.0
-GVRN planning;Domain;2.5;3.0
-AWS;Technical;1.5;3.0
-Secure Development;Technical;1.0;2.0
-Alliander Development Best-practices;Technical;2.0;4.0
-Design Patterns;Technical;0.5;2.0
-Object Oriented programming;Technical;1.0;2.0
-DevOps;Technical;1.5;2.5
-Docker;Technical;1.0;3.0
-Data Extraction;Technical;2.0;4.0
-Time Series Analysis;Technical;3.0;6.0
-Python;Technical;4.0;6.0
-LP/MIP;Technical;4.0;6.0
-Solution Design;Technical;5.0;7.0
-NLP;Technical;4.0;4.0
-Forecasting;Technical;5.0;6.0
-Classification;Technical;6.0;6.0
-Business Impact Assessment;Technical;7.0;7.0
-Model Explainability;Technical;5.0;7.0
-Git;Technical;6.0;7.0
-Statistics and Probability Theory;Technical;7.0;7.0
-Deep Learning;Technical;7.0;7.0
-Data Visualisation;Technical;8.0;8.0
-Data Exploration;Technical;8.0;8.0
-R;Technical;9.5;9.5
-Project Management;Personal;2.0;2.0
-Presenting;Personal;3.0;5.0
-Agile;Personal;4.0;4.0
-Networking;Personal;5.0;5.0
-Organisation Data Science Events;Personal;7.0;7.0
-Develop Material DS Education;Personal;7.0;7.0
-Data Ethics;Personal;8.0;8.0
-Collaboration Business;Personal;6.0;6.5
-Collaboration Developpers;Personal;7.5;7.5
-Research;Personal;8.0;8.0
-Critical Thinking;Personal;8.0;8.0
-Communication Lay Audience;Personal;6.5;7.0
-Documentation;Personal;8.0;8.0
-Learning Mentality;Personal;9.5;9.5
+skill;category;y;y_aim;alliander_essential
+Netbeheer;Domain;0.5;1.0;1
+Elektriciteitsnetten;Domain;0.5;1.5;1
+Interaction Digital Products Alliander;Domain;1.5;3.0;1
+Alliander DS Strategy and Vision;Domain;1.5;3.0;1
+Alliander DS Innovations;Domain;2.0;3.0;1
+O&S planning;Domain;2.5;3.0;0
+GVRN planning;Domain;2.5;3.0;0
+AWS;Technical;1.5;3.0;0
+Secure Development;Technical;1.0;2.0;1
+Alliander Development Best-practices;Technical;2.0;4.0;1
+Design Patterns;Technical;0.5;2.0;0
+Object Oriented programming;Technical;1.0;2.0;0
+DevOps;Technical;1.5;2.5;1
+Docker;Technical;1.0;3.0;1
+Data Extraction;Technical;2.0;4.0;1
+Time Series Analysis;Technical;3.0;6.0;1
+Python;Technical;4.0;6.0;1
+LP/MIP;Technical;4.0;6.0;0
+Solution Design;Technical;5.0;7.0;1
+NLP;Technical;4.0;4.0;0
+Forecasting;Technical;5.0;6.0;1
+Classification;Technical;6.0;6.0;1
+Business Impact Assessment;Technical;7.0;7.0;1
+Model Explainability;Technical;5.0;7.0;1
+Git;Technical;6.0;7.0;1
+Statistics and Probability Theory;Technical;7.0;7.0;1
+Deep Learning;Technical;7.0;7.0;0
+Data Visualisation;Technical;8.0;8.0;1
+Data Exploration;Technical;8.0;8.0;1
+R;Technical;9.5;9.5;1
+Project Management;Personal;2.0;2.0;0
+Presenting;Personal;3.0;5.0;1
+Agile;Personal;4.0;4.0;1
+Networking;Personal;5.0;5.0;1
+Organisation Data Science Events;Personal;7.0;7.0;0
+Develop Material DS Education;Personal;7.0;7.0;0
+Data Ethics;Personal;8.0;8.0;1
+Collaboration Business;Personal;6.0;6.5;1
+Collaboration Developpers;Personal;7.5;7.5;1
+Research;Personal;8.0;8.0;1
+Critical Thinking;Personal;8.0;8.0;1
+Communication Lay Audience;Personal;6.5;7.0;1
+Documentation;Personal;8.0;8.0;1
+Learning Mentality;Personal;9.5;9.5;1
+Databases;Technical;4.5;7.5;1
+Personal Leadership;Personal;4.0;6.5;1

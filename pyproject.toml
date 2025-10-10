@@ -1,6 +1,6 @@
 [project]
 name = "t-shape-visualisation"
-version = "0.2.0"
+version = "0.3.0"
 description = "Interactive T-shape skills visualisation with reactive filtering and modern UI"
 authors = [
     {name = "Fleur Petit", email = "fleur.petit@alliander.com"}

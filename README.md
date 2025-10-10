@@ -5,10 +5,11 @@ Interactive web application for visualising and exploring T-shaped skills data w
 
 ## Features
 
-- 🎯 **Interactive Toggle**: Switch between current skills and skills marked for growth
+- 🎯 **Interactive Filtering**: Multiple toggle switches for flexible data exploration
 - 📊 **Reactive Visualisation**: All charts and tables update automatically based on filtering
 - 🔍 **Skills Breakdown**: Category-wise skill exploration with target comparisons
-- � **Growth Tracking**: Visual indicators showing skill progression with absolute differences
+- 📈 **Growth Tracking**: Visual indicators showing skill progression with absolute differences
+- 🏢 **Alliander Basics**: Filter to show only skills that all Alliander data scientists should have basic familiarity with.
 - 🌐 **Modern Web Interface**: Built with Shiny for Python
 - 📋 **Data Tables**: Interactive data grids for detailed skill analysis
 - 🔗 **GitHub Integration**: Direct link to source code repository
@@ -50,18 +51,24 @@ This will start the interactive web application at `http://127.0.0.1:8000`
 
 ### Application Interface
 
-The application provides two main views:
+The application provides flexible filtering with two independent toggle switches:
 
-1. **Current Skills Only** (toggle off): Shows all skills at their current levels
-2. **Skills Marked for Growth Only** (toggle on): Shows only skills where the target level differs from current level, with growth indicators (e.g., "Python: +2")
+1. **Skills Marked for Growth Only**: Shows only skills where the target level differs from current level, with growth indicators (e.g., "Python: +2")
+2. **Alliander Essential Skills Only**: Shows only skills marked as essential for Alliander (where `alliander_essential == 1`)
 
-All visualisations, data tables, and breakdowns are reactive and update automatically when you switch between modes.
+Both filters can be used independently or combined:
+- Both toggles off: Shows all skills (46 total)
+- Growth toggle only: Shows skills marked for growth (27 skills)
+- Alliander toggle only: Shows essential skills (35 skills)  
+- Both toggles on: Shows essential skills marked for growth (21 skills)
+
+All visualisations, data tables, and breakdowns are reactive and update automatically when you change the filter settings.
 
 ### Interactive Features
 
-- **Toggle Switch**: Filter between all skills and growth-focused skills
+- **Dual Toggle Filters**: Independent filtering for growth focus and Alliander essential skills
 - **Skills Breakdown**: Tabbed view by category (Domain, Technical, Personal)
-- **Raw Data View**: Optional table showing the underlying data
+- **Raw Data View**: Optional table showing the filtered underlying data
 - **Responsive Design**: Works on desktop and mobile devices
 
 ### Data Format
@@ -73,6 +80,7 @@ The application expects two CSV files in the `data/` directory:
    - `category`: Category (Domain/Technical/Personal)
    - `y`: Current skill level (0-10)
    - `y_aim`: Target skill level (optional)
+   - `alliander_essential`: Whether skill is essential for Alliander (0 or 1)
 
 2. **`t_shape_shape.csv`**: T-shape outline coordinates:
    - `x`: X coordinates for the T-shape

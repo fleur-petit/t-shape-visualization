@@ -4,7 +4,7 @@ This is a Python project using UV for dependency management to create interactiv
 
 ## Project Structure
 - Uses UV for modern Python dependency management
-- Interactive data visualization with matplotlib, plotly, and streamlit
+- Interactive data visualization with shiny and plotnine
 - T-shape skills analysis from CSV data files
 - Clean project structure with proper documentation
 
@@ -13,3 +13,4 @@ This is a Python project using UV for dependency management to create interactiv
 - Follow Python best practices for data visualization
 - Keep visualizations interactive and user-friendly
 - Ensure code is well-documented and modular
+- All texts in the interface should use British spelling and follow British capitalisation rules
